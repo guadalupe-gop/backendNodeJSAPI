@@ -1,6 +1,6 @@
 const express = require('express');
-const routerApi = require('./routers');
-// index ya no se coloca por que ya entiende que es archivo principal
+const routerApi = require('./routes');
+
 const app = express();
 const port = 3000;
 
@@ -14,27 +14,23 @@ app.get('/nueva-ruta', (req, res) => {
 
 routerApi(app);
 
-// // reciendo parámetros tipo query con limit y offset
-// app.get('/users', (req, res) => {
-//   const { limit, offset } = req.query;
-//   if (limit && offset) {
-//     res.json({
-//       limit,
-//       offset,
-//     });
-//   } else {
-//     res.send('Parametros no validos...');
-//   }
+//un error muy comun
+// app.get('/products/filter', (req, res) => {
+//   res.send('Yo sou un filter');
 // });
 
-// // un endpoint más complejo recibiendo dos parametros
-// app.get('/categories/:categoryId/products/:productId', (req, res) => {
-//   const { categoryId, productId } = req.params;
-//   res.json({
-//     categoryId,
-//     productId,
-//   });
-// });
+//Como recoger parametros tipo query
+app.get('/users', (req, res) => {
+  const { limit, offset } = req.query;
+  if (limit && offset) {
+    res.json({
+      limit,
+      offset,
+    });
+  } else {
+    res.send('Sin parametros...');
+  }
+});
 
 app.listen(port, () => {
   console.log('Mi port ' + port);

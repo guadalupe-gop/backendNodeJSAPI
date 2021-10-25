@@ -1,7 +1,6 @@
 {
   "name": "backendnodejs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
@@ -21,5 +20,18 @@
   "dependencies": {
     "express": "^4.17.1",
     "faker": "^5.5.3"
+<<<<<<< HEAD
   }
+=======
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guadalupe-gop/backendNodeJSAPI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guadalupe-gop/backendNodeJSAPI/issues"
+  },
+  "homepage": "https://github.com/guadalupe-gop/backendNodeJSAPI#readme",
+  "description": ""
+>>>>>>> 9aa88e2b13060f29f6a6121e096e9a54175b8d64
 }

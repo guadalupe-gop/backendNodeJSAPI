@@ -32,6 +32,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
+// METODO POST
 router.post('/', (req, res) => {
   const body = req.body;
   res.json({
@@ -40,7 +41,7 @@ router.post('/', (req, res) => {
   });
 });
 
-// METODO PATCH
+// METODO PATCH enviar parcial
 router.patch('/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
@@ -54,7 +55,6 @@ router.patch('/:id', (req, res) => {
 // DELETE
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  const body = req.body;
   res.json({
     message: 'deleted',
     id,

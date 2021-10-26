@@ -25,17 +25,23 @@ router.get('/filter', (req, res) => {
 router.get('/:id', (req, res) => {
   // recogemos el id
   const { id } = req.params;
-  res.json({
-    id,
-    name: 'Volt Energy 473ml',
-    price: 1000,
-  });
+  if (id === '999') {
+    res.status(404).json({
+      message: 'Not Found',
+    });
+  } else {
+    res.json({
+      id,
+      name: 'Volt Energy 473ml',
+      price: 1000,
+    });
+  }
 });
 
 // METODO POST
 router.post('/', (req, res) => {
   const body = req.body;
-  res.json({
+  res.status(201).json({
     message: 'created',
     data: body,
   });

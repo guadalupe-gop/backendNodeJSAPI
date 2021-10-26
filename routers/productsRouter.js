@@ -1,6 +1,5 @@
 const express = require('express');
 const faker = require('faker');
-
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -17,13 +16,14 @@ router.get('/', (req, res) => {
   res.json(products);
 });
 
-// todo los endpoints especificos van primero que los dinamicos
+// un error muy comun cuand se empieza con Express a nivel de routing
 router.get('/filter', (req, res) => {
-  res.send('Yo sou un filter');
+  res.send('Soy un filter');
 });
 
-//recogemos el id que nos envian desde la url y regresamos
+// devolviendo el detalle de un producto, recibiendo el id
 router.get('/:id', (req, res) => {
+  // recogemos el id
   const { id } = req.params;
   res.json({
     id,
@@ -32,4 +32,32 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.post('/', (req, res) => {
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body,
+  });
+});
+
+// METODO PATCH
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  res.json({
+    message: 'update',
+    data: body,
+    id,
+  });
+});
+
+// DELETE
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  res.json({
+    message: 'deleted',
+    id,
+  });
+});
 module.exports = router;

@@ -53,7 +53,6 @@ class ProductsService {
   }
 
   async findOne(id) {
-    // getTotal solo para prueba de middleware de como captura error
     const name = this.getTotal();
     return this.products.find((item) => item.id === id);
   }

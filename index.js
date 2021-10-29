@@ -1,6 +1,8 @@
 const express = require('express');
 const routerApi = require('./routers');
 
+const { logErrors, errorHandler } = require('./middlewares/errorHandler');
+
 const app = express();
 const port = 3000;
 
@@ -16,6 +18,10 @@ app.get('/nueva-ruta', (req, res) => {
 });
 
 routerApi(app);
+
+// los middleware de tipo error se deben definir despues definir el routing
+app.use(logErrors);
+app.use(errorHandler);
 
 //un error muy comun
 // app.get('/products/filter', (req, res) => {

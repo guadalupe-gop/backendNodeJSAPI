@@ -15,11 +15,15 @@ router.get('/filter', (req, res) => {
 });
 
 // devolviendo el detalle de un producto, recibiendo el id
-router.get('/:id', async (req, res) => {
-  // recogemos el id
-  const { id } = req.params;
-  const product = await service.findOne(id);
-  res.json(product);
+router.get('/:id', async (req, res, next) => {
+  try {
+    // recogemos el id
+    const { id } = req.params;
+    const product = await service.findOne(id);
+    res.json(product);
+  } catch (error) {
+    next(error);
+  }
 });
 
 // METODO POST

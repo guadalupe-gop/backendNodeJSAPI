@@ -1,8 +1,10 @@
 const express = require('express');
 const routerApi = require('./routers');
-const { logErrors, errorHandler } = require('./middlewares/errorHandler');
-
-const { logErrors, errorHandler } = require('./middlewares/errorHandler');
+const {
+  logErrors,
+  errorHandler,
+  boomErrorHandler,
+} = require('./middlewares/errorHandler');
 
 const app = express();
 const port = 3000;
@@ -22,6 +24,7 @@ routerApi(app);
 
 // los middleware de tipo error se deben definir despues definir el routing
 app.use(logErrors);
+app.use(boomErrorHandler);
 app.use(errorHandler);
 
 //un error muy comun
